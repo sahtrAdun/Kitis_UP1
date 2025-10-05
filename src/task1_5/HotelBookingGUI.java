@@ -36,7 +36,7 @@ class BookingSystem {
         hotels = new java.util.ArrayList<>();
         hotels.add(new Hotel("Гранд Отель", 5, 5000.0));
         hotels.add(new Hotel("Эконом Отель", 10, 1500.0));
-        hotels.add(new Hotel("Бизнес Отель", 3, 8000.0));
+        hotels.add(new Hotel("Бизнес Отель", 0, 8000.0));
     }
 
     public java.util.List<Hotel> getHotels() { return hotels; }
@@ -113,7 +113,8 @@ public class HotelBookingGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             String selectedHotel = (String) hotelComboBox.getSelectedItem();
-            String hotelName = selectedHotel.split(" ")[0];
+            assert selectedHotel != null;
+            String hotelName = selectedHotel.split(" \\(")[0];
             String guestName = nameField.getText().trim();
 
             if (guestName.isEmpty()) {
